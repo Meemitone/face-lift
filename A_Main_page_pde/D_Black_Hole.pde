@@ -25,7 +25,9 @@ translate(width/2,height/2); // moves origin point to center of screen
 
 
   fill(0);
+  translate(0,0,1);
   circle(0,0,(200 + blackHoleBop)*blackHoleSize); // black circle
+  translate(0,0,-1);
   
 noFill();
 
@@ -39,7 +41,7 @@ noFill();
 popMatrix();    
 
 pushMatrix(); // saves matrix position
-translate(width/2,height/2); // moves origin point to center of screen // this is repeated to stop the rotations    
+translate(width/2,height/2,2); // moves origin point to center of screen // this is repeated to stop the rotations    
     
   for(I=0;I<40;I++){
     stroke(random(5,45),255,random(150,255),150);

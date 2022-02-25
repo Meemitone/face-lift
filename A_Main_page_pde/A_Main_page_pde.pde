@@ -19,7 +19,7 @@ BeatDetect beat; // ----minim setups
 int triangleNum = 383;
 int headRandomSpawn = 1; // set to 0 for no random spawn effect
 
-float headScale = 0.7;
+float headScale = 0.9;
 float nodDistance = 0.5; // multiplier of distance moved by head nods, looks best at around 0.3 so far
 
 float headWireframe = -1.5; // 2 for black borders, 0 for no borders, -2 for white borders.
@@ -36,7 +36,7 @@ int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
 
-int U = 0; // stages of the programm
+int U = 1; // stages of the programm
 int I = 0; // int I for all loopy purposes
 int frameNum = 0; // number of frames that have passed
 
@@ -45,7 +45,8 @@ boolean colourRandomiser = false; // this changes the hue of the head on every b
 
 void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -  -  -  -  -  -  -  -  -  -  -  - start of void setup
   colorMode(HSB);
-  fullScreen();
+  fullScreen(P3D);
+  println(width + " " + height);
   println("Hello World"); // general screen setup, hello world goes at the start of each run, so we know which error report is from which run
   
   minim = new Minim(this);
