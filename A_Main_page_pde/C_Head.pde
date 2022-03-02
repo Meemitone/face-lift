@@ -86,9 +86,9 @@ if(zoomIn == true){
     bX = lerp(bX,PT[0][zoomPoint] * headScale + headX,eyeZoom);
     cX = lerp(cX,PT[0][zoomPoint] * headScale + headX,eyeZoom);
   
-    aY = lerp(aY,(PT[1][zoomPoint]-(12-PT[2][100])*(Nod * nodDistance))*headScale+headY,eyeZoom)  ;
-    bY = lerp(bY,(PT[1][zoomPoint]-(12-PT[2][100])*(Nod * nodDistance))*headScale+headY,eyeZoom)  ;
-    cY = lerp(cY,(PT[1][zoomPoint]-(12-PT[2][100])*(Nod * nodDistance))*headScale+headY,eyeZoom)  ; // -----------to here adds the zoom effect to zoom into the eye, comment it to turn it off
+    aY = lerp(aY,(PT[1][zoomPoint]-(12-PT[2][zoomPoint])*(Nod * nodDistance))*headScale+headY,eyeZoom)  ;
+    bY = lerp(bY,(PT[1][zoomPoint]-(12-PT[2][zoomPoint])*(Nod * nodDistance))*headScale+headY,eyeZoom)  ;
+    cY = lerp(cY,(PT[1][zoomPoint]-(12-PT[2][zoomPoint])*(Nod * nodDistance))*headScale+headY,eyeZoom)  ; // -----------to here adds the zoom effect to zoom into the eye, comment it to turn it off
 }
 
     if( aX < width && aX > 0 && aY < height && aY > 0 &&
