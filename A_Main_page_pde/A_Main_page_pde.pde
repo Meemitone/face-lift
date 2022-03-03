@@ -16,18 +16,8 @@ BeatDetect beat; // ----minim setups
 // ----------------------------------------------------------------------------------------------customisables start----------------------------------------------------------------------------
 
 
-int triangleNum = 383;
-int headRandomSpawn = 1; // set to 0 for no random spawn effect
 
-float headScale = 0.7;
-float nodDistance = 0.5; // multiplier of distance moved by head nods, looks best at around 0.3 so far
-
-float headWireframe = -1.5; // 2 for black borders, 0 for no borders, -2 for white borders.
-float wireSize = 1; // stroke weight on the triangles
-boolean headFill = true; // true for filled triangles, false for no fill
-
-int headHue = 180; // Hue of the head, 147 is default
-
+int U = 0; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -36,7 +26,7 @@ int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
 
-int U = 0; // stages of the programm
+
 int I = 0; // int I for all loopy purposes
 int frameNum = 0; // number of frames that have passed
 
