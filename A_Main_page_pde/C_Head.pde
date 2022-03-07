@@ -22,6 +22,9 @@ Head(int headRandomSpawn, float headScale,  float nodDistance, float headWirefra
   this.headFill = headFill;
   this.headHue = headHue;
   
+  
+  initialiseTriangleOrder();// creates a shuffled intlist named triangleOrder, for use in randomising the spawning of head parts
+  
 }
 
 
@@ -75,10 +78,15 @@ float eyeZoom = 0; // amount the eye has zoomed in
 boolean zoomIn = false; // is the camera zooming into the eye
 
 
+void render(){
 
+        drawTriangles(450,  50,  abs(beatTimer - beatTimeMin/2)*2  ); // draws the head based on the settings given
+        if(isHeadComplete == true){playMusic();}
+        
+        if(ap.position() > 8200){colourRandomiser = true;} // starts randomizing colour
+        if(ap.position() > 21400 && zoomIn == false){zoomIn = true; eyeZoom = -0.001;} // zooms in at given time
 
-
-
+}
 
 
 void drawTriangles(float headX, float headY, float Nod){// -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -  -  -  -  -  -  -  -  -  -  -  - start of void

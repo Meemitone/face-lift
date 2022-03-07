@@ -43,7 +43,6 @@ void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
   ap = minim.loadFile("Sweet Dreams.mp3");
   ab = ap.mix;   // regular minim setups
 
-  initialiseTriangleOrder();// creates a shuffled intlist named triangleOrder, for use in randomising the spawning of head parts
 } // -------------------------------------------------------------------------------------------------------------------------------end of void setup
 
 
@@ -77,11 +76,6 @@ switch(U)  {
         background(0);
 
         beatDetect(); // implements the beat detecter, visual circle can be turned off in music tab
-        drawTriangles(450,  50,  abs(beatTimer - beatTimeMin/2)*2  ); // draws the head based on the settings given
-        if(isHeadComplete == true){playMusic();}
-        
-        if(ap.position() > 8200){colourRandomiser = true;} // starts randomizing colour
-        if(ap.position() > 21400 && zoomIn == false){zoomIn = true; eyeZoom = -0.001;} // zooms in at given time
         if(ap.position() > 27000){ U = 2; } // moves to next stage
         if(mousePressed == true){println(ap.position());} // prints position
         
