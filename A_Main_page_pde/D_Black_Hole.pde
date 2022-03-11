@@ -1,6 +1,6 @@
 
 float blackHoleBop = 0;
-
+boolean blackHoleShrink = false;
 
 
 void drawBlackHole(float blackHoleSize){

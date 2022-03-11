@@ -43,9 +43,12 @@ void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
   ap = minim.loadFile("Sweet Dreams.mp3");
   ab = ap.mix;   // regular minim setups
 
+  h1 = new Head (1,  0.7,  0.5,  -1.5,  1,  true,  180);
+//Head(int headRandomSpawn, float headScale,  float nodDistance, float headWireframe, float wireSize, boolean headFill, int headHue)
+
 } // -------------------------------------------------------------------------------------------------------------------------------end of void setup
 
-
+Head h1;
 
 
 
@@ -55,11 +58,11 @@ void draw(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
   frameNum += 1;
  // background(0);  
-  
+          if(mousePressed == true){println(ap.position());} // prints position        if(mousePressed == true){println(ap.position());} // prints position
 
   
 switch(U)  {
-  case 0:
+  case 0: // ----------------------------------------------------------------------------------------------------menu
         background(0);
         
         stroke(0,0,255);
@@ -70,16 +73,18 @@ switch(U)  {
         
         if(mousePressed == true){U = 1;}
          
-  break; // -----------------------------------------------------------------------------------------------------------
+  break; // -----------------------------------------------------------------------------------------------------------head
   
   case 1:  
         background(0);
 
         beatDetect(); // implements the beat detecter, visual circle can be turned off in music tab
         if(ap.position() > 27000){ U = 2; } // moves to next stage
-        if(mousePressed == true){println(ap.position());} // prints position
+        playMusic();
+
+        h1.render();
         
-  break;//--------------------------------------------------------------------------------------------------------------
+  break;//--------------------------------------------------------------------------------------------------------------blackhole
   
   case 2:
         fill(0,0,0,30);
@@ -88,7 +93,18 @@ switch(U)  {
         drawBlackHole((ap.position() - 27000.0)/5000.0); 
         playMusic();
         
-  break;//--------------------------------------------------------------------------------------------------------------
+        if(ap.position() > 52800){ blackHoleShrink = true; }
+        if(ap.position() > 58040){ U = 3; }
+        
+  break;
+  
+  case 3://--------------------------------------------------------------------------------------------------------------blackholeexplosion
+        
+  
+  break;
+  
+  
+  
   }
   
   
