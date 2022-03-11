@@ -90,16 +90,19 @@ switch(U)  {
         fill(0,0,0,30);
         rect(-1,-1,width+2, height+2);
         
+        if(ap.position() < 52800){
         drawBlackHole((ap.position() - 27000.0)/5000.0); 
+        }
         playMusic();
         
-        if(ap.position() > 52800){ blackHoleShrink = true; }
+        if(ap.position() > 52800){ drawBlackHole(1 - ((ap.position() - 52800)/5240)); } // 5240
         if(ap.position() > 58040){ U = 3; }
         
   break;
   
   case 3://--------------------------------------------------------------------------------------------------------------blackholeexplosion
-        
+        fill(0,0,255,10);
+        rect(-1,-1,width+2, height+2);
   
   break;
   
