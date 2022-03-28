@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 0; // stages of the programm
+int U = 3; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -36,8 +36,11 @@ boolean colourRandomiser = false; // this changes the hue of the head on every b
 void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -  -  -  -  -  -  -  -  -  -  -  - start of void setup
   colorMode(HSB);
   fullScreen(P3D);
-  println(width + " " + height);
+  println(width + " " + height); // usually 1920 x 1080
   println("Hello World"); // general screen setup, hello world goes at the start of each run, so we know which error report is from which run
+  
+funkyBWCenterX = 2*width/3;
+funkyBWCenterY = height/2; // centerpoint of the funky shits
   
   minim = new Minim(this);
   ap = minim.loadFile("Sweet Dreams.mp3");
@@ -45,6 +48,11 @@ void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
 
   h1 = new Head (1,  0.7,  0.5,  -1.5,  1,  true,  180);
 //Head(int headRandomSpawn, float headScale,  float nodDistance, float headWireframe, float wireSize, boolean headFill, int headHue)
+
+if(U==0){ap.cue(0);}
+if(U==1){ap.cue(0);}
+if(U==2){ap.cue(27000);}
+if(U==3){ap.cue(58040);}
 
 } // -------------------------------------------------------------------------------------------------------------------------------end of void setup
 
@@ -97,12 +105,20 @@ switch(U)  {
         
         if(ap.position() > 52800){ drawBlackHole(1 - ((ap.position() - 52800)/5240)); } // 5240
         if(ap.position() > 58040){ U = 3; }
+        // 0: 57 seconds into the song
         
   break;
   
   case 3://--------------------------------------------------------------------------------------------------------------blackholeexplosion
-        fill(0,0,255,10);
-        rect(-1,-1,width+2, height+2);
+        fill(0,0,100,100);
+        rect(-600,-300,width+2*600, height+2*400); // flashbang background
+        
+        playMusic();
+        
+ //       void drawFunkyBW(float hue, float brightness, float offsetX, float offsetY){
+        drawFunkyBW(0,0,0,0);
+        drawFunkyBW(40,200,-2,-3);
+  
   
   break;
   
