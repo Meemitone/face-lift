@@ -104,24 +104,24 @@ switch(U)  {
         playMusic();
         
         if(ap.position() > 52800){ drawBlackHole(1 - ((ap.position() - 52800)/5240)); } // 5240
-        if(ap.position() > 58040){ U = 3; }
+        if(ap.position() > 58040){background(150); U = 3; }
         // 0: 57 seconds into the song
         
   break;
   
   case 3://--------------------------------------------------------------------------------------------------------------blackholeexplosion
-        fill(0,0,100,100);
-        rect(-600,-300,width+2*600, height+2*400); // flashbang background
-        
+
+//        background(100);
         playMusic();
         
  //       void drawFunkyBW(float hue, float brightness, float offsetX, float offsetY){
         drawFunkyBW(0,0,0,0);
         drawFunkyBW(40,200,-2,-3);
-  
+        beatDetect();
+        
+
   
   break;
-  
   
   
   }
