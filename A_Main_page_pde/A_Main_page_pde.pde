@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 3; // stages of the programm
+int U = 4; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -41,6 +41,8 @@ void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
   
 funkyBWCenterX = 2*width/3;
 funkyBWCenterY = height/2; // centerpoint of the funky shits
+
+gayPhoto = loadImage("Gay image.png");
   
   minim = new Minim(this);
   ap = minim.loadFile("Sweet Dreams.mp3");
@@ -53,6 +55,7 @@ if(U==0){ap.cue(0);}
 if(U==1){ap.cue(0);}
 if(U==2){ap.cue(27000);}
 if(U==3){ap.cue(58040);}
+if(U==4){ap.cue(92000);}
 
 } // -------------------------------------------------------------------------------------------------------------------------------end of void setup
 
@@ -109,9 +112,9 @@ switch(U)  {
         
   break;
   
-  case 3://--------------------------------------------------------------------------------------------------------------blackholeexplosion
+  case 3://--------------------------------------------------------------------------------------------------------------funky scheisse-----------
 
-//        background(100);
+        background(100);
         playMusic();
         
  //       void drawFunkyBW(float hue, float brightness, float offsetX, float offsetY){
@@ -119,11 +122,25 @@ switch(U)  {
         drawFunkyBW(40,200,-2,-3);
         beatDetect();
         
-
+        if(ap.position() > 92000){ U = 4; background(100); }       
   
   break;
   
+  case 4://-----------------------------------------------------------------------------------------------------------------------gay circles mnnnnnnnnnnn ---------------------
   
+        playMusic();
+
+        background(0);
+       
+        
+        for(float i = gayZpos; i < 10000; i+=500)
+        
+        //void gayRing(float gayDist, float gayRadius,   int gayCount = 12;){
+        gayRing(i, 1000, 12);
+        gayZpos-=40;
+        if(gayZpos > 500)
+        gayZpos = -500;
+  break;
   }
   
   
