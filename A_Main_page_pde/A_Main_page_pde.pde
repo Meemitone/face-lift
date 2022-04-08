@@ -25,7 +25,7 @@ int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 // ----------------------------------------------------------------------------------------------customisables end------------------------------------------------------------------------------
 
 
-
+Head h1; // creeates a head class
 
 int I = 0; // int I for all loopy purposes
 int frameNum = 0; // number of frames that have passed
@@ -42,7 +42,7 @@ void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
 funkyBWCenterX = 2*width/3;
 funkyBWCenterY = height/2; // centerpoint of the funky shits
 
-  gaySetup();
+  gaySetup(); // sets up the photo for the ring
   
   minim = new Minim(this);
   ap = minim.loadFile("Sweet Dreams.mp3");
@@ -59,7 +59,7 @@ if(U==4){ap.cue(92000);}
 
 } // -------------------------------------------------------------------------------------------------------------------------------end of void setup
 
-Head h1;
+
 
 
 
@@ -114,7 +114,7 @@ switch(U)  {
   
   case 3://--------------------------------------------------------------------------------------------------------------funky scheisse-----------
 
-        background(100);
+  //      background(100);
         playMusic();
         
  //       void drawFunkyBW(float hue, float brightness, float offsetX, float offsetY){
