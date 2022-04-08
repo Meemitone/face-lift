@@ -1,5 +1,5 @@
 float gaySpin = 0;
-float gayZpos = -1000;
+float gayZpos = -500;
 PImage gayPhoto;
 
 void gayRing(float gayDist, float gayRadius,  int gayCount){
@@ -7,17 +7,10 @@ void gayRing(float gayDist, float gayRadius,  int gayCount){
   
   pushMatrix();
   translate(width/2,height/2,-gayDist);
-
-
- // fill(0,255,100,100);
-
- // rect(0,0,gayRadius/5,gayRadius/2);
-  
-  rotateX(PI/2);
+  rotateX(PI/2); // moves plane to center and back a bit
   
 
-
-  float gayRectWidth = 2*gayRadius*tan(PI/gayCount);
+  float gayRectWidth = 2*gayRadius*tan(PI/gayCount);// deci
   
   for(int i = 0; i < gayCount; i++)
   {
@@ -26,19 +19,16 @@ void gayRing(float gayDist, float gayRadius,  int gayCount){
   rotateY(-TWO_PI/gayCount * i + gaySpin);
   translate(0,0,-gayRadius);
   translate(-gayRectWidth * i-1,0,0);
-
-  
-
   
   noFill();
 //  fill(0);
   strokeWeight(8);
-//  stroke(0,0,255);
-noStroke();
+  stroke(0,0,100);
+//noStroke();
   rectMode(CENTER);
   
   for(I=0;I<gayCount;I++){
-    fill(I*20,200,200);
+  fill(I*20,200,200);
   rect(gayRectWidth * I,0,gayRectWidth,500);
   }
   
@@ -49,4 +39,22 @@ noStroke();
   popMatrix();
   }
   popMatrix();
+}
+
+
+
+
+
+void drawGayTunnel()
+{
+
+        //void gayRing(float gayDist, float gayRadius,   int gayCount = 12;){
+        for(float i = gayZpos; i < 10000; i+=500)
+        gayRing(i, 1000, 12);
+        
+        gayZpos-=40;
+        if(gayZpos > 500)
+        gayZpos = -500;
+  
+  
 }

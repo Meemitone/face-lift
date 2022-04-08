@@ -132,14 +132,8 @@ switch(U)  {
 
         background(0);
        
-        
-        for(float i = gayZpos; i < 10000; i+=500)
-        
-        //void gayRing(float gayDist, float gayRadius,   int gayCount = 12;){
-        gayRing(i, 1000, 12);
-        gayZpos-=40;
-        if(gayZpos > 500)
-        gayZpos = -500;
+        drawGayTunnel();
+
   break;
   }
   
