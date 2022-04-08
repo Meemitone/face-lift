@@ -96,10 +96,7 @@ void gayRing(float gayDist) { // -----------------------------------------------
    // zpos starts at 0 and goes to - 2*gayLength
  
    translate(( gayRectWidth * gayCount)  /3, gayLength/3 ,0);
-   
-//   circle(0,0, gaySpiralSize * 0.2);    // gets into place for spiral
-
-   drawGaySpiral_1( gaySpiralSize * 0.2, 100);
+   drawGaySpiral_1( gaySpiralSize * 0.2, 100); // moves to and then draws first spiral
 
     popMatrix();
   }
