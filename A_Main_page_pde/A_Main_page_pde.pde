@@ -42,7 +42,7 @@ void setup(){ // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
 funkyBWCenterX = 2*width/3;
 funkyBWCenterY = height/2; // centerpoint of the funky shits
 
-gayPhoto = loadImage("Gay image.png");
+  gaySetup();
   
   minim = new Minim(this);
   ap = minim.loadFile("Sweet Dreams.mp3");
@@ -132,6 +132,7 @@ switch(U)  {
 
         background(0);
        
+        gayDraw();
         drawGayTunnel();
 
   break;
