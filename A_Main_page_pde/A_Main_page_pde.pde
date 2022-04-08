@@ -130,7 +130,7 @@ switch(U)  {
   
         playMusic();
 
-        background(0);
+     //   background(0);
        
         gayDraw();
         drawGayTunnel();
