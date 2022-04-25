@@ -102,11 +102,11 @@ switch(U)  {
         rect(-1,-1,width+2, height+2);
         
         if(ap.position() < 52800){
-        drawBlackHole((ap.position() - 27000.0)/5000.0); 
+        drawBlackHole((ap.position() - 27000.0f)/5000.0f); 
         }
         playMusic();
         
-        if(ap.position() > 52800){ drawBlackHole(1 - ((ap.position() - 52800)/5240)); } // 5240
+        if(ap.position() > 52800){ drawBlackHole(1 - ((ap.position() - 52800)/5240f)); } // 5240
         if(ap.position() > 58040){background(150); U = 3; }
         // 0: 57 seconds into the song
         
