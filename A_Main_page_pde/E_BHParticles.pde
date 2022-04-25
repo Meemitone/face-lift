@@ -11,6 +11,13 @@ class dust
   
   dust(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta, float rotat)
   {
+    /*each particle must spawn in at random times, then move according to the formula
+    also the speed at which they are pulled in needs a steeper ramp
+    reduce the verticle particle number by more than half, then make them bigger and brighter
+    speed up the horizontal particles
+    we need to bring everything closer to the camera and make them smaller to make sure they dont dissappear behind the background
+    */
+    
     float range = maxRad-minRad;
     xRotat = rotat;
     dZRotat = delta;
