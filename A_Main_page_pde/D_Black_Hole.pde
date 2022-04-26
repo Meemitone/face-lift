@@ -1,6 +1,7 @@
 
 float blackHoleBop = 0;
 boolean blackHoleShrink = false;
+boolean BHend = false;
 boolean BHsetup = true;
 dust stormA;
 dust stormB;
@@ -11,8 +12,8 @@ void drawBlackHole(float blackHoleSize){
   {
     //on first call of drawBlackHole, make the particle storm objects
     BHsetup = false;
-  stormA = new dust(1000, 50, 1000, 5,10,0,30,-0.005);
-  stormB = new dust(1000, 50, 1000, 5,10,0,40,0.0025, PI/3);
+  stormA = new dust(250, 50, 1000, 3,18,0,30,-0.005); //(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta, float rotat)
+  stormB = new dust(500, 50, 1000, 3,10,0,40,0.0025, PI/3);
   }
   
 blackHoleBop = 0 + abs(ab.get(0)*500); // black hole size based off sound
@@ -70,10 +71,22 @@ pushMatrix();
   pushMatrix();
   translate(width/2,height/2);
   stormA.particles();
-  stormA.update(0.125*blackHoleBop/20);
+  if(BHend)
+  stormA.update(6);//this is the run for the finish bit
+  else
+  {stormA.update(blackHoleBop/100);//this is the number for speed
+  stormA.spawn(int(blackHoleBop/100));}
   rotateX(PI/3);
   stormB.particles();
-  stormB.update(0.125*blackHoleBop/20);
+  if(BHend)
+  {
+  stormB.update(6);
+  }
+  else
+  {
+  stormB.update(blackHoleBop/100);
+  stormB.spawn(int(blackHoleBop/100));
+  }
   popMatrix();
 
 noStroke();

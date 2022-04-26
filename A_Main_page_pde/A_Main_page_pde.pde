@@ -99,14 +99,19 @@ switch(U)  {
   
   case 2:
         fill(0,0,0,30);
-        rect(-1,-1,width+2, height+2);
-        
+        pushMatrix();
+        translate(width/2,height/2,1000);
+        rectMode(CENTER);
+        rect(0,0,width*5, height*5);
+        rectMode(CORNER);
+        popMatrix();
         if(ap.position() < 52800){
         drawBlackHole((ap.position() - 27000.0f)/5000.0f); 
         }
         playMusic();
         
         if(ap.position() > 52800){ drawBlackHole(1 - ((ap.position() - 52800)/5240f)); } // 5240
+        if(ap.position() > 55040){BHend = true;}//3 seconds before transition, tell the BHparticles to shlorp in
         if(ap.position() > 58040){background(150); U = 3; }
         // 0: 57 seconds into the song
         
