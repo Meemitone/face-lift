@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 2; // stages of the programm
+int U = 5; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -56,6 +56,7 @@ if(U==1){ap.cue(0);}
 if(U==2){ap.cue(27000);}
 if(U==3){ap.cue(58040);}
 if(U==4){ap.cue(92000);}
+if(U==5){ap.cue(119000);}
 
 } // -------------------------------------------------------------------------------------------------------------------------------end of void setup
 
@@ -112,7 +113,10 @@ switch(U)  {
         
         if(ap.position() > 52800){ drawBlackHole(1 - ((ap.position() - 52800)/5240f)); } // 5240
         if(ap.position() > 55040){BHend = true;}//3 seconds before transition, tell the BHparticles to shlorp in
-        if(ap.position() > 58040){background(150); U = 3; }
+        if(ap.position() > 58040){noStroke(); fill(0,0,150,5); rect(-1,-1,width+2,height+2);}
+        if(ap.position() > 58340){noStroke(); fill(0,0,150,10); rect(-1,-1,width+2,height+2);}     
+        if(ap.position() > 58640){noStroke(); fill(0,0,150,100); rect(-1,-1,width+2,height+2);}        
+        if(ap.position() > 59000){background(150); U = 3; }
         // 0: 57 seconds into the song
         
   break;
@@ -127,7 +131,7 @@ switch(U)  {
         drawFunkyBW(40,200,-2,-3);
         beatDetect();
         
-        if(ap.position() > 92000){ U = 4; background(100); }       
+        if(ap.position() > 92000){ U = 4; background(100); }        // moves onto next
   
   break;
   
@@ -139,7 +143,16 @@ switch(U)  {
        
         gayDraw();
         drawGayTunnel();
-
+         if(ap.position() > 119000){U=5;} // moves onto next
+  break;
+  
+  case 5://------------------------------------------------------------------------------------------------------------------------cewb-----------------------------------
+  
+   playMusic();
+  
+      drawCewb();
+  
+  
   break;
   }
   

@@ -1,4 +1,4 @@
-
+float blackHoleAngle = PI/2.1;
 float blackHoleBop = 0;
 boolean blackHoleShrink = false;
 boolean BHend = false;
@@ -12,23 +12,23 @@ void drawBlackHole(float blackHoleSize){
   {
     //on first call of drawBlackHole, make the particle storm objects
     BHsetup = false;
-  stormA = new dust(250, 50, 1000, 3,18,0,30,-0.005); //(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta, float rotat)
-  stormB = new dust(500, 50, 1000, 3,10,0,40,0.0025, PI/3);
+  stormA = new dust(250/4, 50, 1000, 3,18,0,30,-0.005); //(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta, float rotat)
+  stormB = new dust(500/2, 50, 1000, 3,10,0,40,0.0025, blackHoleAngle);
   }
   
 blackHoleBop = 0 + abs(ab.get(0)*500); // black hole size based off sound
   
   blackHoleSize = constrain(blackHoleSize,0,1);
   
-  
+ 
   for(I=0;I<100;I++){
     stroke(random(5,45),255,random(150,255),100);  
     line(width/2, height/2 + random(-100,+100)*blackHoleSize,  width/2 + random(-300,300)*blackHoleSize,height/2); // short lines
   }
-  for(I=0;I<150;I++){
+ /* for(I=0;I<150;I++){
     stroke(random(0,35),255,random(150,255),50);  
     line(width/2,height/2 + (random(-50,50))*blackHoleSize,  width/2 + random(-600,600) * blackHoleSize,height/2); // long lines
-  }
+  }*/
   
   
 pushMatrix(); // saves matrix position
@@ -39,6 +39,7 @@ translate(width/2,height/2); // moves origin point to center of screen
   fill(0);
   translate(0,0,1);
   circle(0,0,(200 + blackHoleBop)*blackHoleSize); // black circle
+  sphere((200 + blackHoleBop)*blackHoleSize/2); // does a sphere
   translate(0,0,-1);
   
 noFill();
@@ -54,11 +55,17 @@ popMatrix();
 
 pushMatrix(); // saves matrix position
 translate(width/2,height/2,2); // moves origin point to center of screen // this is repeated to stop the rotations    
-    
+rotateX(blackHoleAngle);
+
   for(I=0;I<40;I++){
+    stroke(random(5,45),255,random(150,255),150);
+    circle(0,0,  random((300+blackHoleBop)*blackHoleSize,  (700+blackHoleBop)*blackHoleSize)); // horizontal circles
+  }
+/*  for(I=0;I<40;I++){
     stroke(random(5,45),255,random(150,255),150);
     arc(0,0,  random((300+blackHoleBop)*blackHoleSize,  (700+blackHoleBop)*blackHoleSize),random(50,100)*blackHoleSize  ,0,  PI); // front half elipse
   }
+  */
 popMatrix();
 
 

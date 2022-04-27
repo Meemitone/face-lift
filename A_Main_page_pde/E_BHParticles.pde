@@ -35,15 +35,15 @@ class dust
     
     float range = maxRad-minRad;
     spawnMax = maxRad;
-    println(spawnMax);
+//    println(spawnMax);
     spawnMin = minRad + 0.8*range;
-    println(spawnMin);
+//    println(spawnMin);
     spawnCRMax = maxCol;
     spawnCRMin = 0.8*(maxCol-minCol);
-    println(spawnCRMax + " " + spawnCRMin);
+ //   println(spawnCRMax + " " + spawnCRMin);
     spawnSMin = minSize;
     spawnSMax = maxSize;
-    println(minSize + " " + spawnSMin + " " + maxSize + " " + spawnSMax);
+//    println(minSize + " " + spawnSMin + " " + maxSize + " " + spawnSMax);
     xRotat = rotat;
     dZRotat = delta;
     zRotat = 0;
@@ -67,15 +67,15 @@ class dust
   { //This constructor is literally the same as above, but has no rotat set
     float range = maxRad-minRad;
     spawnMax = maxRad;
-    println(spawnMax);
+  //  println(spawnMax);
     spawnMin = minRad + 0.8*range;
-    println(spawnMin);
+ //   println(spawnMin);
     spawnCRMax = maxCol;
     spawnCRMin = 0.8*(maxCol-minCol);
-    println(spawnCRMax + " " + spawnCRMin);
+  //  println(spawnCRMax + " " + spawnCRMin);
     spawnSMin = minSize;
     spawnSMax = maxSize;
-    println(minSize + " " + spawnSMin + " " + maxSize + " " + spawnSMax);
+ //   println(minSize + " " + spawnSMin + " " + maxSize + " " + spawnSMax);
     xRotat = 0;
     dZRotat = delta;
     zRotat = 0;

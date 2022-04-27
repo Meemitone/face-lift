@@ -73,37 +73,21 @@ void gayRing(float gayDist) { // -----------------------------------------------
     translate(0, 0, -gayRadius);
     translate(-gayRectWidth * i-1, 0, 0); // gets to position of rectangles --------
 
-    noFill();
-    //  fill(0);
+
     strokeWeight(8);
     stroke(0, 0, 100);
-    //noStroke();
+    noStroke();
+    fill(0);
+ // fill(i*20, 0, i*(255/gayCount));
     rectMode(CENTER); // sets up rect
-
-
-//      fill(i*20, 0, i*(255/gayCount));
-      fill(0);
-      rect(gayRectWidth * i, 0, gayRectWidth, gayLength); // draws rects -----------
- 
-
-
-  //  image(gayPhoto,-gayRectWidth/2,0);
- //   image(gayDrawing, -gayRectWidth/2, 0); // applies the photo to the ring
- 
-   noStroke();
-   fill(0);
-   
-   // zpos starts at 0 and goes to - 2*gayLength
-   
-//   for(I=0;I<abs(ab.get(0)*100);I+= abs(ab.get(0)*10) ){
-     
-   translate(0, 0, 1 + abs(ab.get(0)*100)); 
-   
-   println(abs(ab.get(0)*100));
-// translate(0,0,I);  
+    rect(gayRectWidth * i, 0, gayRectWidth, gayLength); // draws rects -----------
+    
+    noStroke();
+    fill(0);   
+  
+   translate(0, 0, 1 + abs(ab.get(0)*200)); 
    translate(( gayRectWidth * gayCount)  /3, gayLength/3 ,0);
    drawGaySpiral_1( gaySpiralSize * 0.2, 100); // moves to and then draws first spiral
- //  }
 
     popMatrix();
   }
@@ -124,7 +108,7 @@ void drawGayTunnel()// ---------------------------------------------------------
     gayRing(i);
   }
   
-  gayZpos-=40;
+  gayZpos-=20;
   if (gayZpos < -2*gayLength)
     gayZpos = 0;
 //      println(gayZpos);
