@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 1 ; // stages of the programm
+int U = 6 ; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -176,13 +176,14 @@ switch(U)  {
     h1.zoomIn = false;
     h1.render(false,false); 
   
-  if(ap.position() > 176000){U=7;}
+  if(ap.position() > 174500){U=7;}
   break;
   
   case 7://------------------------------------------------------------------------------------------------------------------------shatter-----------------------------------
   
   h2.Place(h1.headHue);
   U+=h2.Shatter();
+  if(ap.position() > 175700){ap.pause();}
   
   break;
   
