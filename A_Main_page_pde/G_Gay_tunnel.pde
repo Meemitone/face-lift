@@ -88,7 +88,8 @@ void gayRing(float gayDist) { // -----------------------------------------------
    translate(0, 0, 1 + abs(ab.get(0)*200)); 
    translate(( gayRectWidth * gayCount)  /3, gayLength/3 ,0);
    drawGaySpiral_1( gaySpiralSize * 0.2, 100); // moves to and then draws first spiral
-
+    
+    strokeWeight(1);
     popMatrix();
   }
   popMatrix();

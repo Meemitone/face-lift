@@ -1,4 +1,4 @@
-float blackHoleAngle = PI/2.1;
+float blackHoleAngle = PI/2.2;
 float blackHoleBop = 0;
 boolean blackHoleShrink = false;
 boolean BHend = false;
@@ -12,8 +12,8 @@ void drawBlackHole(float blackHoleSize){
   {
     //on first call of drawBlackHole, make the particle storm objects
     BHsetup = false;
-  stormA = new dust(250/4, 50, 1000, 3,18,0,50,-0.005); //(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta, float rotat)
-  stormB = new dust(500/2, 50, 1000, 3,10,0,60,0.0025, blackHoleAngle);
+  stormA = new dust(20, 50, 1000, 3,18,0,50,-0.005); //(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta, float rotat)
+  stormB = new dust(200, 50, 1000, 3,10,0,60,0.0025, blackHoleAngle);
   }
   
 blackHoleBop = 0 + abs(ab.get(0)*500); // black hole size based off sound
