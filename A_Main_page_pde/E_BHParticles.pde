@@ -10,11 +10,17 @@ class dust
   float spawnMin = 100, spawnMax = 500; //range in which particles can spawn
   float spawnCRMin, spawnCRMax; //colour range of spawned particles
   float spawnSMin = 10, spawnSMax = 10; //size range of spawned particles
+  
+  float maxrad, minrad, maxcol, mincol;
     
   //assume the dust is drawn from the center of it's plane after rotation
   
   dust(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta, float rotat)
   {
+    maxrad = maxRad;
+    minrad = minRad;
+    maxcol = maxCol;
+    mincol = minCol;
     /*
     each particle must spawn in at random times, then move according to the formula
       -there's initial ones, and ones that spawn in to beatdetection
@@ -65,6 +71,10 @@ class dust
   
   dust(int count, float minRad, float maxRad, float minSize, float maxSize, float minCol, float maxCol, float delta)
   { //This constructor is literally the same as above, but has no rotat set
+  maxrad = maxRad;
+    minrad = minRad;
+    maxcol = maxCol;
+    mincol = minCol;
     float range = maxRad-minRad;
     spawnMax = maxRad;
   //  println(spawnMax);
@@ -130,6 +140,7 @@ class dust
       move = location[i].copy();
       move.mult(-1/move.mag()*mag);
       location[i].add(move);
+      clr[i] = map(location[i].mag(), minrad, maxrad, mincol, maxcol); 
     }
   }
   
