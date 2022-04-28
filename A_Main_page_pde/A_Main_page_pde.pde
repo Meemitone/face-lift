@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 1; // stages of the programm
+int U = 6  ; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -60,6 +60,7 @@ if(U==2){ap.cue(27000);}
 if(U==3){ap.cue(58040);}
 if(U==4){ap.cue(92000);}
 if(U==5){ap.cue(119000);}
+if(U==6){ap.cue(160360);}
 
 } // -------------------------------------------------------------------------------------------------------------------------------end of void setup
 
@@ -96,13 +97,13 @@ switch(U)  {
         beatDetect(); // implements the beat detecter, visual circle can be turned off in music tab
         if(ap.position() > 27000){ U = 2; } // moves to next stage
         playMusic();
-        if(ap.position() > 8200)
+        if(ap.position() > 21400  )
         {
-          h1.render(true,false);  
+          h1.render(true,true);  
         }
-        else if(ap.position() > 21400)
+        else if(ap.position() > 8200)
         {
-          h1.render(true,true);
+          h1.render(true,false);
         }
         else
         {
@@ -150,10 +151,7 @@ switch(U)  {
   
   case 4://-----------------------------------------------------------------------------------------------------------------------gay circles mnnnnnnnnnnn ---------------------
   
-        playMusic();
-
-     //   background(0);
-       
+        playMusic();     
         gayDraw();
         drawGayTunnel();
          if(ap.position() > 119000){U=5;} // moves onto next
@@ -162,22 +160,30 @@ switch(U)  {
   case 5://------------------------------------------------------------------------------------------------------------------------cewb-----------------------------------
   
    playMusic();
-  
-      drawCewb();
-  
-  
+   drawCewb();
+   if(ap.position() > 160360){U=6;} 
+   beatDetect();
+   
   break;
   
-  case 6://------------------------------------------------------------------------------------------------------------------------shatter-----------------------------------
+  case 6://-------------------------------------------------------------------------------------------------------------------------amongus balls----------
   
-  playMusic();
+    background(255);
+    beatDetect();
+    playMusic();
+    h1.render(false,false); 
   
-  h2.Place(69);
+  if(ap.position() > 176000){U=7;}
+  break;
+  
+  case 7://------------------------------------------------------------------------------------------------------------------------shatter-----------------------------------
+  
+  h2.Place(h1.headHue);
   U+=h2.Shatter();
   
   break;
   
-  case 7://------------------------------------------------------------------------------------------------------------------------end-----------------------------------
+  case 8://------------------------------------------------------------------------------------------------------------------------end-----------------------------------
   exit();
   break;
   }

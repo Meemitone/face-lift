@@ -1,24 +1,26 @@
 float cewbRotate = 0;
-int cewbCount = 20; // the number of cubes across one row
-float cewbSpace = 20;
+int cewbCount = 0; // the number of cubes across one row
+int cewbTotal = 10;
+float cewbSpace = 60;
 float[][][] cewbTimer;
 float[][][] cewbSize;
 float[][][] cewbLSize;
 float[][][] cewbBrightness;
 int cewbSaturation = 200;
-int cewbHue = 200;
+float cewbHue = 200;
+float cewbAddTimer = 3;
 
 void initialiseCewb()
 {
-  cewbTimer = new float[cewbCount][cewbCount][cewbCount];
-  cewbSize = new float[cewbCount][cewbCount][cewbCount];
-  cewbLSize = new float[cewbCount][cewbCount][cewbCount];
-  cewbBrightness = new float[cewbCount][cewbCount][cewbCount];
+  cewbTimer = new float[cewbTotal][cewbTotal][cewbTotal];
+  cewbSize = new float[cewbTotal][cewbTotal][cewbTotal];
+  cewbLSize = new float[cewbTotal][cewbTotal][cewbTotal];
+  cewbBrightness = new float[cewbTotal][cewbTotal][cewbTotal];
   
- for(int x=0;x<cewbCount;x++){
-   for(int y=0;y<cewbCount;y++){
-     for(int z=0;z<cewbCount;z++){
-        cewbTimer[x][y][z] = 6;
+ for(int x=0;x<cewbTotal;x++){
+   for(int y=0;y<cewbTotal;y++){
+     for(int z=0;z<cewbTotal;z++){
+        cewbTimer[x][y][z] = 1;
         cewbSize[x][y][z] = cewbSpace/2;
         cewbSize[x][y][z] = cewbSpace/2;
         cewbBrightness[x][y][z] = 155;
@@ -79,7 +81,10 @@ void drawCewb(){
   }
   popMatrix();
   
-  
+//  println(cewbAddTimer);
+ if(cewbAddTimer < 0 && cewbCount < cewbTotal){ cewbCount += 1; cewbAddTimer = 3;}   else{cewbAddTimer -= 0.05;}
+ 
+ if(isBeat == true){cewbHue = random(0,255); }
  cewbRotate+=PI/(60*6);
   popMatrix();
 }

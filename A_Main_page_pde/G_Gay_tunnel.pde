@@ -11,7 +11,7 @@ int gayRingNum = 2; // with a background, the system only really allows a tunnel
 float gayCount = 20;
 float gayRectWidth;
 float gayRadius = 500;
-float gayPlaneWidth;
+float gayPlaneWidth; // == 2*gayRadius*tan(PI/gayCount)*gayCount
 float gaySpiralSize = 0;
 float gayScalar;
 
@@ -23,8 +23,9 @@ void gaySetup() // -------------------------------------------------------------
   gayDrawing = createGraphics(int(gayRectWidth*gayCount), 500);
   gayPhoto = loadImage("Gay image.png"); // creates a photo which will be drawn with code
   
-  gayPlaneWidth = gayRectWidth*gayCount; 
+  gayPlaneWidth = gayRectWidth*gayCount;  
   gayScalar =gayPlaneWidth/3167.689; // for use in quick maffs
+  println(gayPlaneWidth);
 }
 
 
