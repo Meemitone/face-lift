@@ -171,13 +171,13 @@ float eyeZoom = 0; // amount the eye has zoomed in
 boolean zoomIn = false; // is the camera zooming into the eye
 
 
-void render(){
+void render(boolean rando, boolean zoom){
 
         drawTriangles(450,  50,  abs(beatTimer - beatTimeMin/2)*2  ); // draws the head based on the settings given
         if(isHeadComplete == true){playMusic();}
         
-        if(ap.position() > 8200){colourRandomiser = true;} // starts randomizing colour
-        if(ap.position() > 21400 && zoomIn == false){zoomIn = true; eyeZoom = -0.001;} // zooms in at given time
+        if(rando){colourRandomiser = true;} // starts randomizing colour
+        if(zoom){zoomIn = true; eyeZoom = -0.001;} // zooms in at given time
 
 }
 

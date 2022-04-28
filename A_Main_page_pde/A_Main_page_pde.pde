@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 6; // stages of the programm
+int U = 1; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -96,8 +96,18 @@ switch(U)  {
         beatDetect(); // implements the beat detecter, visual circle can be turned off in music tab
         if(ap.position() > 27000){ U = 2; } // moves to next stage
         playMusic();
-
-        h1.render();
+        if(ap.position() > 8200)
+        {
+          h1.render(true,false);  
+        }
+        else if(ap.position() > 21400)
+        {
+          h1.render(true,true);
+        }
+        else
+        {
+          h1.render(false,false);
+        }
         
   break;//--------------------------------------------------------------------------------------------------------------blackhole
   
