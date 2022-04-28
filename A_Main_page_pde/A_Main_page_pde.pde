@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 6  ; // stages of the programm
+int U = 2  ; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -99,7 +99,7 @@ switch(U)  {
         playMusic();
         if(ap.position() > 21400  )
         {
-          h1.render(true,true);  
+          h1.render(true,false);  
         }
         else if(ap.position() > 8200)
         {
@@ -171,7 +171,7 @@ switch(U)  {
     background(255);
     beatDetect();
     playMusic();
-    h1.render(false,false); 
+    h1.render(false,true); 
   
   if(ap.position() > 176000){U=7;}
   break;
