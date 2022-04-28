@@ -43,6 +43,7 @@ funkyBWCenterX = 2*width/3;
 funkyBWCenterY = height/2; // centerpoint of the funky shits
 
   gaySetup(); // sets up the photo for the ring
+  initialiseCewb();
   
   minim = new Minim(this);
   ap = minim.loadFile("Sweet Dreams.mp3");
