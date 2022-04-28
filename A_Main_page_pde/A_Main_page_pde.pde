@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 5; // stages of the programm
+int U = 6; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -26,6 +26,7 @@ int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
 Head h1; // creeates a head class
+Shatterer h2;
 
 int I = 0; // int I for all loopy purposes
 int frameNum = 0; // number of frames that have passed
@@ -51,6 +52,7 @@ funkyBWCenterY = height/2; // centerpoint of the funky shits
 
   h1 = new Head (1,  0.7,  0.5,  -1.5,  1,  true,  180);
 //Head(int headRandomSpawn, float headScale,  float nodDistance, float headWireframe, float wireSize, boolean headFill, int headHue)
+h2 = new Shatterer(0.1);
 
 if(U==0){ap.cue(0);}
 if(U==1){ap.cue(0);}
@@ -154,6 +156,19 @@ switch(U)  {
       drawCewb();
   
   
+  break;
+  
+  case 6://------------------------------------------------------------------------------------------------------------------------shatter-----------------------------------
+  
+  playMusic();
+  
+  h2.Place(69);
+  U+=h2.Shatter();
+  
+  break;
+  
+  case 7://------------------------------------------------------------------------------------------------------------------------end-----------------------------------
+  exit();
   break;
   }
   
