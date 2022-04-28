@@ -83,7 +83,7 @@ pushMatrix();
   else
   {stormA.update(blackHoleBop/100);//this is the number for speed
   stormA.spawn(int(blackHoleBop/100));}
-  rotateX(PI/3);
+  //rotateX(blackHoleAngle);
   stormB.particles();
   if(BHend)
   {

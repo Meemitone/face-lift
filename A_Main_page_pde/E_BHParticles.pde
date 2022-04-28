@@ -98,6 +98,7 @@ class dust
   {
     noStroke();
     pushMatrix();
+    rotateX(xRotat);
     rotateZ(zRotat);
     //println(location.length);
     for (int i=0; i<location.length; i++)
