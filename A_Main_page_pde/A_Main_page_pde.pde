@@ -17,7 +17,7 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 2  ; // stages of the programm
+int U = 1 ; // stages of the programm
 int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
 
 
@@ -97,9 +97,10 @@ switch(U)  {
         beatDetect(); // implements the beat detecter, visual circle can be turned off in music tab
         if(ap.position() > 27000){ U = 2; } // moves to next stage
         playMusic();
-        if(ap.position() > 21400  )
+        if(ap.position() > 21400)
         {
-          h1.render(true,false);  
+          h1.render(true,true); 
+          println(h1.zoomIn);
         }
         else if(ap.position() > 8200)
         {
@@ -171,7 +172,9 @@ switch(U)  {
     background(255);
     beatDetect();
     playMusic();
-    h1.render(false,true); 
+    h1.eyeZoom = 0;
+    h1.zoomIn = false;
+    h1.render(false,false); 
   
   if(ap.position() > 176000){U=7;}
   break;

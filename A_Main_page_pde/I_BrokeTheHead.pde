@@ -56,7 +56,6 @@ class Shatterer
 
   void Place (float hue)
   {
-    background(0);
     stroke(255);
     translate(500, 0);
     for (int i = 0; i < TRI[0].length; i++)
