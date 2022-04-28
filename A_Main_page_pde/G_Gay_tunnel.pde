@@ -132,7 +132,4 @@ void drawGaySpiral_1(float size, int circleNum)
     rotateZ(PI*2.3);
 
   }
-  
-  
-  
 }

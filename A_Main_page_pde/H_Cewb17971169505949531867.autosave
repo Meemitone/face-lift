@@ -5,6 +5,7 @@ float[][][] cewbTimer;
 float[][][] cewbSize;
 float[][][] cewbLSize;
 
+
 void initialiseCewb()
 {
   cewbTimer = new float[cewbCount][cewbCount][cewbCount];
@@ -15,7 +16,6 @@ void initialiseCewb()
    for(int y=0;y<cewbCount;y++){
      for(int z=0;z<cewbCount;z++){
         cewbTimer[x][y][z] = 3;
-        cewbSize[x][y][z] = cewbSpace/2;
         cewbSize[x][y][z] = cewbSpace/2;
      }
    }
@@ -53,18 +53,17 @@ void drawCewb(){
        
        for(int z=0; z<cewbCount; z++){
           translate(0,0,cewbSpace);   // generates a row along the z axis
+          
           if(cewbTimer[x][y][z] < 0){
-            cewbTimer[x][y][z] = random(3,5);
-            cewbSize[x][y][z] = random(cewbSpace/10,cewbSpace*1.2);
-          }
+          cewbTimer[x][y][z] = random(2,5);
+          cewbSize[x][y][z] = random(cewbSpace/10,cewbSpace*1.5);}
           else{
-            cewbTimer[x][y][z] -= 0.1;
-          }
-          cewbLSize[x][y][z] = lerp(cewbLSize[x][y][z],cewbSize[x][y][z],0.1);
+          cewbTimer[x][y][z] -= (0.1);
+        println(cewbTimer[x][y][z]);}
           
           fill(0,0,z*30);
           stroke(I*15+y*15,255,255);
-          box(cewbLSize[x][y][z]);
+          box(cewbSize[x][y][z]);
       }
       popMatrix();
     }
@@ -73,6 +72,6 @@ void drawCewb(){
   popMatrix();
   
   
- cewbRotate+=PI/(60*6);
+ cewbRotate+=PI/(60*5);
   popMatrix();
 }
