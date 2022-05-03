@@ -98,16 +98,19 @@ void gayRing(float gayDist) { // -----------------------------------------------
     
     noStroke();
     fill(200,255,255);
+    pushMatrix()    ;
+        rotate(1*gaySpin);
     drawGaySpiral_1( gaySpiralSize * 0.2, 100); // moves to and then draws first spiral
-    
+    popMatrix();
     
     translate(1000,5000);  
-    
+pushMatrix()    ;
     strokeWeight(1);
     fill(150,255,255);
     noStroke();
+    rotate(-2*gaySpin);
     art(num,0); // draws the second spiral
-
+popMatrix();
     
     translate(300,3000);  
     rotate(-PI/2);
