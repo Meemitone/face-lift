@@ -15,7 +15,8 @@ float gayPlaneWidth; // == 2*gayRadius*tan(PI/gayCount)*gayCount
 float gaySpiralSize = 0;
 float gayScalar;
 
-
+float recurSize=0;
+float len = 1250;//your max size is twice this (spiral)
 
 void gaySetup() // --------------------------------------------------------------------------------------------------------------------------------
 {
@@ -57,8 +58,11 @@ void gayDraw()// ---------------------------------------------------------------
 
 
 void gayRing(float gayDist) { // --------------------------------------------------------------------------------------------------------------------------------
-  //  gaySpin += 0.01;
-
+    gaySpin += 0.001;
+  
+ float num = 750+750*sin(frameCount*TWO_PI/1000);
+   recurSize = len+len*sin(frameCount/100f*PI); // these are used as oscilating sizes for the spirals
+   
   pushMatrix();
   translate(width/2, height/2, -gayDist);
   rotateX(PI/2); // moves plane to center and back a bit
@@ -78,20 +82,38 @@ void gayRing(float gayDist) { // -----------------------------------------------
     strokeWeight(8);
     stroke(0, 0, 100);
     noStroke();
-    fill(0);
+    fill(10);
  // fill(i*20, 0, i*(255/gayCount));
     rectMode(CENTER); // sets up rect
     rect(gayRectWidth * i, 0, gayRectWidth, gayLength); // draws rects -----------
+      
+      
+      
+      
+      
+//   translate(0, 0, abs(ab.get(0)*200));  // bops the spirals
+
+
+    translate(( gayRectWidth * gayCount)  /3, gayLength/3 ,1);
     
     noStroke();
-    fill(0);   
-  
-   translate(0, 0, 1 + abs(ab.get(0)*200)); 
-   translate(( gayRectWidth * gayCount)  /3, gayLength/3 ,0);
-   drawGaySpiral_1( gaySpiralSize * 0.2, 100); // moves to and then draws first spiral
+    fill(200,255,255);
+    drawGaySpiral_1( gaySpiralSize * 0.2, 100); // moves to and then draws first spiral
+    
+    
+    translate(1000,5000);  
     
     strokeWeight(1);
-    popMatrix();
+    fill(150,255,255);
+    noStroke();
+    art(num,0); // draws the second spiral
+
+    
+    translate(300,3000);  
+    rotate(-PI/2);
+    recur(recurSize,750,5,0,0,0,20);
+
+     popMatrix();
   }
   popMatrix();
 }
@@ -123,15 +145,69 @@ void drawGayTunnel()// ---------------------------------------------------------
 
 
 
-void drawGaySpiral_1(float size, int circleNum)
-{
-  float Y=0;
-  for(I=0;I<size;I+=gayLength/circleNum*0.2)
-  {
-    fill(-Y/10,255,255);
-    Y -= 20;
-    circle(0,Y,30);
-    rotateZ(PI*2.3);
 
+
+
+
+
+
+
+
+
+void drawGaySpiral_1(float size, int circleNum) // ----------------------------------- 1
+{
+  pushMatrix();
+  float Y=0;
+  for(I=0;I<size;I+=gayLength/circleNum*0.1)
+  {
+//    fill(-Y/10,255,255);
+    Y -= 10;
+    circle(0,Y,30);
+    rotateZ(PI*1.1);
+
+  }
+  popMatrix();
+}
+
+
+
+void art(float radius, float theta) // -------------------------------------- 2
+{
+  float t = theta;
+  for(float i = 0; i < radius; i+=10)
+  {
+    float x,y;
+ x = i*sin(t);
+ y = i*-cos(t);
+
+ circle(x,y,20);
+
+ t += 0.08;
+  }
+}
+
+
+
+
+
+
+void recur(float distrem, float armdist, int segmentation, float x, float y, float angle, float colour) //------------------------------------------- 3
+{
+  stroke(colour, 255,255);
+  float drawlen;
+  if (distrem<=armdist)
+  drawlen = distrem;
+  else
+  drawlen = armdist;
+  
+  float x2 = x + drawlen * cos(angle);
+  float y2 = y + drawlen * sin(angle);
+  line(x,y,x2,y2);
+  if(distrem<=armdist)
+  return;
+  
+  for(int i = 1; i < segmentation; i++)
+  {
+    recur(distrem-armdist, armdist, segmentation, x2, y2, angle+TWO_PI/float(segmentation)*i+PI, (colour+20)%255);
   }
 }
