@@ -26,7 +26,6 @@ int beatTimeMin = 24; // 12 is stable, 20 is ideal but doesnt work
 
 
 Head h1; // creeates a head class
-Shatterer h2;
 
 int I = 0; // int I for all loopy purposes
 int frameNum = 0; // number of frames that have passed
@@ -52,7 +51,6 @@ funkyBWCenterY = height/2; // centerpoint of the funky shits
 
   h1 = new Head (1,  0.7,  0.5,  -1.5,  1,  true,  180);
 //Head(int headRandomSpawn, float headScale,  float nodDistance, float headWireframe, float wireSize, boolean headFill, int headHue)
-h2 = new Shatterer(0.1);
 
 if(U==0){ap.cue(0);}
 if(U==1){ap.cue(0);}
@@ -174,16 +172,17 @@ switch(U)  {
     playMusic();
     h1.eyeZoom = 0;
     h1.zoomIn = false;
+    h1.triangleCount = h1.triangleNum;
     h1.render(false,false); 
   
-  if(ap.position() > 174500){U=7;}
+  if(ap.position() > 174500){U=7; h1.zset();}
   break;
   
   case 7://------------------------------------------------------------------------------------------------------------------------shatter-----------------------------------
   
     background(255);
-  h2.Place(h1.headHue);
-  U+=h2.Shatter();
+  h1.render(false, false);
+  U+=h1.Shatter();
   if(ap.position() > 174500){ap.pause();}
   
   break;

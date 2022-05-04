@@ -22,6 +22,23 @@ Head(int headRandomSpawn, float headScale,  float nodDistance, float headWirefra
   this.headFill = headFill;
   this.headHue = headHue;
   
+  dY = 0.1;
+
+    for (int i = 0; i < Xvel.length; i++)
+    {
+      Xvel[i] = random(-3, 3);
+      Yvel[i] = -2;
+    }
+    for (int i = 0; i < PXvel.length; i++)
+    {
+      PXvel[i] = random(-0.8, 0.8);
+      if (PT[0][i]<0)
+      {
+        PT[0][i] = 9999;
+        PT[1][i] = 9999;
+      }
+    }
+  
   
   initialiseTriangleOrder();// creates a shuffled intlist named triangleOrder, for use in randomising the spawning of head parts
   
@@ -207,7 +224,7 @@ void drawTriangles(float headX, float headY, float Nod){// -  -  -  -  -  -  -  
     if(headFill == false){noFill();}  
     stroke(headHue,  TRI[3][tO]*2.5,  TRI[4][tO] *(1+(1.5*(1-headWireframe))) );  // decides colours and strokes, wireframe is changed on main page
 
-    aY = ( PT[1][int(TRI[0][tO])]  -  (12 - PT[2][int(TRI[0][tO])] ) * (Nod * nodDistance) )  * headScale + headY ; // sets the Y value, then adds (13 - Zlayer) * (beat based variable * nod distance)
+    aY = ( PT[1][int(TRI[0][tO])]  -  (12 - PT[2][int(TRI[0][tO])] ) * (Nod * nodDistance) )  * headScale + headY ; // sets the Y value, then adds (12 - Zlayer) * (beat based variable * nod distance)
     bY = ( PT[1][int(TRI[1][tO])]  -  (12 - PT[2][int(TRI[1][tO])] ) * (Nod * nodDistance) )  * headScale + headY ; // nod distance is changed at the start of main page for  customisability.
     cY = ( PT[1][int(TRI[2][tO])]  -  (12 - PT[2][int(TRI[2][tO])] ) * (Nod * nodDistance) )  * headScale + headY ;
     
@@ -275,7 +292,47 @@ void drawPoints(float headX,float headY){
 
 
 
+  float dY = 0.1;
+  float[] Xvel = new float[TRI[0].length];
+  float[] Yvel = new float[TRI[0].length];
+  float[] PXvel = new float[PT[0].length];
 
+int Shatter()
+  {
+    float headY = 50;
+    translate(500, 0);
+    boolean fin = true;
+    for (int i = 0; i < TRI[0].length; i++)
+    {
+      //fill(hue, TRI[3][i], TRI[4][i]);
+      //stroke(hue, TRI[3][i], TRI[4][i]*2);
+      //triangle(PT[0][(int)TRI[0][i]], PT[1][(int)TRI[0][i]], PT[0][(int)TRI[1][i]], PT[1][(int)TRI[1][i]], PT[0][(int)TRI[2][i]], PT[1][(int)TRI[2][i]]);
+      PT[0][(int)TRI[0][i]] = lerp(PT[0][(int)TRI[0][i]], PT[0][(int)TRI[0][i]]+Xvel[i], 0.8);//, 0-500, (width-500+1)*headScale);
+      PT[0][(int)TRI[1][i]] = lerp(PT[0][(int)TRI[1][i]], PT[0][(int)TRI[1][i]]+Xvel[i], 0.8);//, 0-500, (width-500+1)*headScale);
+      PT[0][(int)TRI[2][i]] = lerp(PT[0][(int)TRI[2][i]], PT[0][(int)TRI[2][i]]+Xvel[i], 0.8);//, 0-500, (width-500+1)*headScale);
+      PT[1][(int)TRI[0][i]] = lerp(PT[1][(int)TRI[0][i]], PT[1][(int)TRI[0][i]]+Yvel[i], 0.8);//, 0, (height+1)*headScale);
+      PT[1][(int)TRI[1][i]] = lerp(PT[1][(int)TRI[1][i]], PT[1][(int)TRI[1][i]]+Yvel[i], 0.8);//, 0, (height+1)*headScale);
+      PT[1][(int)TRI[2][i]] = lerp(PT[1][(int)TRI[2][i]], PT[1][(int)TRI[2][i]]+Yvel[i], 0.8);//, 0, (height+1)*headScale);
+      Yvel[i]+=dY;
+      if (PT[1][(int)TRI[0][i]]* headScale + headY<=height||PT[1][(int)TRI[1][i]]* headScale + headY<=height||PT[1][(int)TRI[2][i]]* headScale + headY<=height)
+      {
+        fin = false;
+      }
+    }
+    for (int i = 0; i < PXvel.length; i++)
+    {
+      PT[0][i] += PXvel[i];
+    }
+    if (fin)
+      return 1;
+    return 0;
+  }
+
+void zset()
+{
+  
+  
+}
 
 
 }
