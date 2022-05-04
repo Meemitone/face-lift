@@ -31,7 +31,7 @@ void beatDetect(){
   
   if(isBeat == true){ beatNum += 1; }
   stroke(255);  textSize(15);
-  circle(50,50+beatTimer,50); fill(255); text(beatNum,40,57+beatTimer);  // ------------------------------------------------------beat indicator, put it in a comment to hide it----
+//  circle(50,50+beatTimer,50); fill(255); text(beatNum,40,57+beatTimer);  // ------------------------------------------------------beat indicator, put it in a comment to hide it----
 }
 
 void playMusic(){

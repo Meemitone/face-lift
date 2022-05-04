@@ -163,7 +163,7 @@ void drawGaySpiral_1(float size, int circleNum) // -----------------------------
   float Y=0;
   for(I=0;I<size;I+=gayLength/circleNum*0.1)
   {
-//    fill(-Y/10,255,255);
+    fill(220+Y/50  ,255,255);
     Y -= 10;
     circle(0,Y,30);
     rotateZ(PI*1.1);

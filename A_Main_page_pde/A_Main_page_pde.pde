@@ -17,8 +17,8 @@ BeatDetect beat; // ----minim setups
 
 
 
-int U = 4 ; // stages of the programm
-int beatTimeMin = 12; // 12 is stable, 20 is ideal but doesnt work
+int U = 0 ; // stages of the programm
+int beatTimeMin = 24; // 12 is stable, 20 is ideal but doesnt work
 
 
 
@@ -100,7 +100,7 @@ switch(U)  {
         if(ap.position() > 21400)
         {
           h1.render(true,true); 
-          println(h1.zoomIn);
+ //         println(h1.zoomIn);
         }
         else if(ap.position() > 8200)
         {
